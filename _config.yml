@@ -4,8 +4,8 @@
 title: Wrocławskie Dane
 description: "Analitycy danych miejskich we Wrocławiu"
 analytics: #Google analytics code in the format XX-nnnnnnnn-n
-baseurl: "http://dane.wroclaw.pl/" #important: start with /
-url: "http://dane.wroclaw.pl"
+baseurl: "" #important: start with /
+url: "http://dane.wroclaw.pl/"
 
 # Build settings
 markdown: kramdown
@@ -98,6 +98,7 @@ clients:
     img: tumw_logo_OK_1_xfi7mm.png
   - name: Akcja Miasto
     img: logo-akcja-miasto_xn3ryd.png
-    
+  - name: Wroclife
+    img: 500.png  
 # Short text about your company. Shown in footer on every page and also separately on Home and Contact page.
 # about: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
