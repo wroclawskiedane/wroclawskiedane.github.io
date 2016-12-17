@@ -7,8 +7,7 @@ layout: default
 <div class="container mt">
     <div class="row">
 
-        {% include carousel.html %}
-
+        
         <div class="col-lg-5 col-lg-offset-1">
             <div class="spacing"></div>
 
@@ -17,16 +16,16 @@ layout: default
         </div>
         <div class="col-lg-4 col-lg-offset-1">
             <div class="spacing"></div>
-            <h4>Project Details</h4>
+            <h4>Fiszka danych</h4>
             <div class="hline"></div>
-            <p><b>Date:</b> {{ page.date | date: "%b %-d, %Y" }}</p>
-            <p><b>Author:</b> {{ page.author }}</p>
-            <p><b>Categories:</b> {{ page.categories }}</p>
-            <p><b>Tagged:</b> {{ page.tagged }}</p>
-            <p><b>Client:</b> {{ page.client }}</p>
-            <p><b>Website:</b> <a href="{{ page.website }}">{{ page.website }}</a></p>
+            <p><b>Data:</b> {{ page.date | date: "%b %-d, %Y" }}</p>
+            <!--p><b>Author:</b> {{ page.author }}</p>
+            <p><b>Categories:</b> {{ page.categories }}</p-->
+            <p><b>Nazwa:</b> {{ page.tagged }}</p>
+            <p><b>Źródło:</b> {{ page.client }}</p>
+            <p><b>Adres:</b> <a href="{{ page.website }}">{{ page.website }}</a></p>
         </div>
-    </div><! --/row -->
-</div><! --/container -->
+    </div><!--/row -->
+</div><!--/container -->
 	 
-{% include portfolio.html title="Related Works." limit=5 %}
+{% include portfolio.html title="Pozostałe zbiory danych" limit=5 %}
