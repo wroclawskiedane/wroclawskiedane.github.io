@@ -1,0 +1,97 @@
+---
+layout: project
+title:  "Dane o mobilności rowerowej dla Wrocławia"
+date:   2016-12-03 16:54:46
+author: Marcel Newman
+categories:
+- project
+img: nextbike.jpg
+tagged: Wrocławski Rower Miejski, Cycling Challenge
+client: UM Wrocław
+website: http://iron.engine.kdm.wcss.pl:55580/datathon/nextbike/
+---
+
+W ramach danych dot. ruchu rowerowego we Wrocławiu udostępnione zostają trzy zestawy zbiorów dla roku 2016:
+<ul>
+<li>dane dot. wypożyczeń rowerów z Wrocławskiego Roweru Miejskieg</li>
+<li>pozycje stacji</li>
+<li>najkrótsze rowerowe trasy między stacjami wedle Google</li>
+<li>metadane oraz trasy przejazdów Cycling Challenge z Wrocławia</li>
+</ul> 
+
+<h2>Dane dot. wypożyczeń</h2>
+
+Dane dot wypożyczeń zawierają zrzut bazy mySQL-owej - all_trips.16.12.15.sql.gz - z dwoma tabelami:
+<ul>
+<li>nextbike - zawierającej dane o wypożyczeniach</li>
+<li>station - zawierającej dane o stacjach</li>
+</ul>
+
+Tabela nextbike zawiera pola:
+<ul>
+<li>uid - id wypozyczenia</li>
+<li>bike_name - id roweru</li>
+<li>start/end_time - moment wypożyczenia/zwrotu</li>
+<li>start/end_place_id - id stacji wypożyczenia/zwrotu zgodne z polem stat_id w tabeli station</li>
+<li>cust_id - zrandomizowany id przydzielony unikatowym userom</li>
+</ul>
+
+Tabela station zawiera pola
+<ul>
+<li>stat_id - id stacji</li>
+<li>stat_num - numer stacji</li>
+stat_num-5900 da nam liczbe porządkową z następnego zbioru</li>
+<li>adres - słowny adres/nazwa stacji</li>
+</ul>
+
+<h2>Pozycje stacji oraz najkrótsze trasy</h2>
+Pozycje stacji pochodzą z portal Wrocław Open Data - plik 20160405-transport_stacje_WRM.xls - i zawierają kolumny:
+<ul>
+<li>LP - numer porzadkowy stacji</li>
+pole LP odpowiada wartości stat_num z tabeli station po operacji (stat_num-5900)</li>
+<li>System - nazwa miasta ("Wrocław")</li>
+<li>Lokalizacja - słowna lokalizacja</li>
+<li>Szerokość geograficzna</li>
+<li>Długość geograficzna</li>
+</ul>
+
+Najkrótsze trasy zawarte są w skompresowanym pliku JSON - 20160405-stacje-WRM-odleglosci-rowerem.json - zawiera on obiekt (słownik)</li>
+który dla każdej pary numerów porządkowych stacji z pliku 20160405-transport_stacje_WRM.xls dostarczają odpowiedź z Google Maps API - obiekt JSON z danymi o trasie rowerem.
+
+<h2>Cycling Challenge</h2>
+
+Dane dot <a href="http://cyclingchallenge.eu/pl/home">European Cycling Challenge</a> - składają się z dwóch skompresowanych plików CSV:
+<ul>
+<li>CyclingChallenge_metadata.csv.gz - zawierającej metadane o użytkownikach</li>
+<li>CyclingChallenge_trips.csv.gz - zawierającej dane o podróżach</li>
+</ul>
+
+Metadane w Cycling Challenge to następujące kolumny:
+<ul>
+<li>TripID - id rejestrowanej podróży</li>
+<li>TimeStamp - czas trwania podróży</li>
+<li>Start DT - czas rozpoczęcia podróży</li>
+<li>Distance - przejechany dystans</li>
+<li>ECC</li>
+<li>AvgSpeed - średnia prędkość</li>
+<li>TrackType</li>
+<li>Sex - płeć</li>
+<li>Year - rok urodzenia</li>
+<li>Profession - zawód</li>
+<li>Frequent User</li>
+<li>ZIP - kod pocztowy</li>
+<li>Source - sposób kolekcjonowania danych o trasie</li>
+<li>TypeOfBike - rodzaj roweru</li>
+<li>TipeOfTrip - cel podróży</li>
+</ul>
+
+Dane o podróżach zawarte są w tabeli jako kolejne odczyty pozycji GPS:
+<ul>
+<li>TripID - id podróży jak w metadanych</li>
+<li>TimeStamp - czas pobrania pomiaru GPS</li>
+<li>Latitude, Longitude - pozycja</li>
+<li>Altitude - wysokość terenu</li>
+<li>Distance - przejechany dystans od poprzedniego pomiaru w danej podróży</li>
+<li>Speed - prędkość w stosunku do poprzedniego punktu</li>
+<li>Type - typ pomiaru: start (początkowy), mid (środkowy), end (końcowy)</li>
+</ul>

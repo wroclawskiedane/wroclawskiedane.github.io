@@ -1,0 +1,84 @@
+---
+layout: project
+title:  "Wrocławski Budżet Obywatelski - projekty i głosy"
+date:   2016-12-03 16:54:46
+author: Marcel Newman
+categories:
+- project
+img: wbo.jpg
+tagged: Dane o projektach i głosach w WBO
+client: UM Wrocław, wroclaw.pl
+website: http://iron.engine.kdm.wcss.pl:55580/datathon/wbo/
+---
+
+W ramach danych dot. Wrocławskiego budżetu obywatelskiego udostępnione zostają dwa zestawy zbiorów:
+<ul>
+<li>informacje o projektach zgłoszonych do WBO w latach 2014, 2015 i 2016</li>
+<li>informacje o głosach oddanych w WBO w latach 2015 i 2016</li>
+</ul> 
+
+<h2>Dane projektów</h2>
+
+Informacje o projektach zgłoszonych do WBO - o nazwie <tt>2016-12-03-projects-wbo201X.json.gz</tt>, gdzie X = 4,5,6 - zebrane są w skompresowanych plikach w formacie JSON i dotyczą odpowiednio 2014, 2015 i 2016. Format każdego z tych pików to obiekt lub jak kto woli słownik w którym <b>kluczami są nr projektów</b> zaś wartość dla danego klucza to kolejny obiekt (słownik) o następujących polach:
+<dl>
+<dt>status <tt>string</tt></dt>
+<dd>czy projekt został dopuszczony do głosowania - i jeśli został - czy wygrał czy nie</dd>
+
+<dt>category <tt>string</tt></dt>
+<dd>kategoria projektu np. piesze/rowerow</dd>
+
+<dt>votes <tt>int</tt></dt>
+<dd>liczba głosów oddanych na projekt (null jeśli nie dopuszczony do głosowania)</dd>
+
+<dt>attachments <tt>list[string]</tt></dt>
+<dd>linki do załączników projektu, pełne (zaczynające się od http://) lub relatywna ścieżka w stosunku do adresu <tt>https://www.wroclaw.pl/budzet-obywatelski-wroclaw/wbo2016/projekty-201X/</tt>, gdzie X zmienia się zgodnie z rokiem</dd>
+
+<dt>district <tt>string</tt></dt>
+<dd>osiedle/osiedla którego ten projekt dotyczy</dd>
+
+<dt>level <tt>string</tt></dt>
+<dd>próg budżetowy, w WBO funkcjonowały różne progi w zależności od roku</dd>
+
+<dt>title <tt>string</tt></dt>
+<dd>tytuł projektu</dd>
+
+<dt>budget <tt>int</tt></dt>
+<dd>koszt/budżet projektu w złotówkach</dd>
+
+<dt>comments <tt>list[string]</tt></dt>
+<dd>komentarze UM do projektu w kolejnych rundach ewaluacji, oraz odpowiedzi lidera projektu</dd>
+
+<dt>points <tt>list[{'latitude': float, 'longitude': float}}]</tt></dt>
+<dd>lista punktów geograficznych które zostały zgłoszone przy projekcie, projekcja WGS84, czyli SRID=4326</dd>
+
+<dt>detailed_localization <tt>string</tt></dt>
+<dd>dokładniejszy słowny opis lokalizacji, często działki, albo precyzyjne wyjaśnienia</dd>
+
+<dt>id <tt>int</tt></dt>
+<dd>nr projektu</dd>
+
+<dt>description <tt>string</tt></dt>
+<dd>opis zgłoszonego projektu</dd>
+
+<dt>description <tt>string</tt></dt>
+<dd>opis zgłoszonego projektu</dd>
+
+<dt>region <tt>string</tt></dt>
+<dd>rejon projektu, tylko w 2016 roku</dd>
+</dl>
+
+<h2>Głosy</h2>
+
+W plikach <tt>*-WBO_lista_glosow_201X.csv.gz</tt> gdzie X=5,6 - odpowiednio 2015 i 2016 znajdują się kopie plików CSV z głosami oddanymi na WBO. Oryginalne pliki można znaleźć na <a href="http://www.wroclaw.pl/open-data/index.php/zbiory-danych/15-urzad-miasta/140-wroclawski-budzet-obywatelski-2">tej podstronie Open Data</a>.
+
+Pliki te mają dość opisowe nagłówki tabel, dla przypomnienia:
+<ul>
+<li>Lp - numer głosu</li>
+<li>Data - data głosu</li>
+<li>Wiek - wiek</li>
+<li>Płeć - płeć</li>
+<li>Osiedle - osiedle (tylko 2015)</li>
+<li>Kod_Pocztowy - kod pocztowy</li>
+<li>Zrodlo - 'I' jesli głos oddany internetowo, 'P' jeśli papierowo</li>
+<li>Prog_* - kolumny oznaczajace oddanie glosow w danym progu - różne warianty nazw dla roku 2015 i 2016</li>
+</ul>

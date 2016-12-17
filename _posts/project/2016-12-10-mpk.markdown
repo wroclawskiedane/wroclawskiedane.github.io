@@ -1,0 +1,51 @@
+---
+layout: project
+title:  "Dane o mobilności komunikacją zbiorową dla Wrocławia"
+date:   2016-12-03 16:54:46
+author: Marcel Newman
+categories:
+- project
+img: mpk.jpg
+tagged: Wrocławski Rower Miejski, Cycling Challenge
+client: UM Wrocław
+website: http://iron.engine.kdm.wcss.pl:55580/datathon/mpk/
+---
+
+W ramach danych dot. ruchu komunikacją zbiorową we Wrocławiu udostępnione zostają trzy zestawy zbiorów dla roku 2016:
+<ul>
+<li>dane z systemu pozycyjnego pojazdów MPK z API aplikacji iMPK</li>
+<li>wyszukiwania z jakdojade.pl uzupełnione o proponowane trasy jazdy z opentripplanera</li>
+<li>rozkłady w formacie GTFS</li>
+<li>poziom napełnienia autobusów</li>
+</ul> 
+
+<h2>Pozycje MPK</h2>
+
+Dane dot. pozycji MPK to dwa pliki CSV - pierwszy 20161014.csv.gz opisuje ruch w dniu 14 października 2016, zaś drugi 20161008-20161023.csv.gz - ruch od północy w sobotę 8.10.2016 do 23:59 w niedzielę 23.10.2016. Są to unikatowe odczyty z systemu pozycyjnego, zbierane co 10 sekund (system aktualizuje się co ok. 15 sekund). Tabele te zawierają następujące pola:
+<ul>
+<li>closestStop - nr słupka przystanku do którego jedzie aktualnie autobus/tramwaj (zgodny z numeracją stops.txt z GTFS)</li>
+<li>course - nr/id kursu, para kurs+data są unikatowe</li>
+<li>delay - opóźnienie nabrane od ostatniego przystanku, innymi słowy spóźnienie do nast. przystanku w microsekundach</li>
+<li>line - linia</li>
+<li>timestamp - czas pobrania pomiaru pozycji</li>
+<li>vehiclecode - nr boczny taboru</li>
+<li>direction - kierunek, dokladnie nr słupka ostatniego przystanku na kursie</li>
+<li>type - typ bus/tram</li>
+<li>latlon - punkt w którym znajduje się dany tabor</li>
+</ul>
+
+
+<h2>GTFS</h2>
+
+Sam opis formatu definiuje <a href="https://developers.google.com/transit/gtfs/reference/">specyfikacja formatu GTFS</a>. Aktualna wersja rozkładu wrocławskiej komunikacji zbiorowej w formacie GTFS dostępna jest na serwerach <a href="http://www.wroclaw.pl/open-data/index.php/zbiory-danych/17-transport/106-rozklad-jazdy-transportu-publicznego">Wrocław Open Data</a>. Niestety z najnowszej wersji usunięto kształty tras, dlatego załączamy starszą wersję pliku GTFS - 20160229-wroclaw.gtfs.zip - który zawiera plik shapes.txt definiujący trasy dla każdej z linii. 
+
+<h2>Wyszukiwania jakdojade.pl i estymacja tras w odpowiedzi</h2>
+
+Uzyskaliśmy dzięki współpracy z Koduj dla Polski - próbkę 10 tyś. wyszukiwań z portalu jakdojade.pl dla losowego dnia - 11 maja 2015 - znajdują się one w pliku jakdojade-searches.csv, w którym znajdziemy tabele:
+<ul>
+<li>cartodb_id, the_geom - pola z cartodb, można zignorować</li>
+<li>date - data/godzina wyszukiwania</li>
+<li>end/start_lon/lat - współrzędne geograficzne źródła i celu w formacie WGS84, SRID=3426</li>
+</ul>
+
+Dane te uzupełniliśmy prognozami przejazdów komunikacją zbiorową wygenerowanymi na bazie danych z wrocławskiego rozkładu GTFS oraz topografi ulic z OpenStreetMap. Niestety nie mieliśmy danych o rozkładach kolejowych w formacie GTFS dlatego - o ile wyszukiwania z jakdojade.pl zawierają wyszukiwania połączeń koleją aglomeracyjną, tak niestety nasze prognozy ich nie dostarczają. Prognozy wykonane planerem <a href="http://www.opentripplanner.org/">OpenTripPlanner</a>a znajdują się w pliku jakdojade-opentripplanner.json.gz - w kolejności wedle czasu wyszukiwania z pliku jakdojade-searches.csv.
