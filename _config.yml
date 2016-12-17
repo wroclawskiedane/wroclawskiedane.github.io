@@ -4,7 +4,7 @@
 title: Wrocławskie Dane
 description: "Analitycy danych miejskich we Wrocławiu"
 analytics: #Google analytics code in the format XX-nnnnnnnn-n
-baseurl: "" #important: start with /
+baseurl: "http://dane.wroclaw.pl/" #important: start with /
 url: "http://dane.wroclaw.pl"
 
 # Build settings
